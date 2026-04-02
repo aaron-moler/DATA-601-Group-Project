@@ -26,19 +26,15 @@ class DataHandler:
 
 
     #convert all categorical variables into discrete ordered/unordered values
-    def transform(self, mapping = None):
+    def transform(self, mapping):
         self.dfTransform = self.df.copy()
-        #loop through columns to adjust for ordered values
-        for col in self.dfTransform:
-            if col in mapping:
-                self.dfTransform[col] = self.dfTransform[col].map(mapping)
-                
-                #change column from object to float so that it is unaffected by get_dummies
-                self.dfTransform[col] = pd.to_numeric(self.dfTransform[col], errors='coerce')
-                
+        #loop through mapping to adjust for ordered values
+        for col, map_dict in mapping.items():
+            if col in self.dfTransform:
+                self.dfTransform[col] = self.dfTransform[col].map(map_dict)
         
         #convert all remaining object columns into unordered values
-        self.dfTransform = pd.get_dummies(self.dfTransform,drop_first=True)
+        self.dfTransform = pd.get_dummies(self.dfTransform,drop_first=False)
         
         return self.dfTransform.copy()
        

@@ -1,8 +1,9 @@
 from data_analyzer import Data_analyze
-#from data_handler import
+from data_handler import DataHandler
+from visualizer import DataVisualizer
 #from model_evaluator import 
 #from model_trainer import 
-#from visualizer import 
+
 
 import pandas as pd 
 import numpy as np
