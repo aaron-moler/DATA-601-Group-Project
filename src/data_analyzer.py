@@ -1,5 +1,7 @@
-from libraries_used import pd
-from libraries_used import np 
+import pandas as pd 
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 class Data_analyze:
     
